@@ -1,6 +1,6 @@
-# OMS-Veeam
+# Welcome to Veeam Solution for OMS
 
-This solution for Microsoft Operations Management Suite allows you to monitor:
+This free Intelligent Pack for Operations Management Suite allows you to monitor:
 
 - Veeam Backup & Replication Server
 - Veeam Agent for Windows
@@ -15,3 +15,5 @@ Before import the solution, you must create a group called GroupComputerVeeamBac
 Event
 | where EventLog == "Veeam Backup"
 | distinct Computer
+
+The project is open and everyone can improve the IP. For more information you send a feedback from our web page: www.insidetechnologies.eu.

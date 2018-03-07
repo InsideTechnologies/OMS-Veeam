@@ -1,0 +1,516 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "resourcegroup": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "subscriptionId": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "workspace": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "workspaceapiversion": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "[parameters('workspaceapiversion')]",
+            "name": "[parameters('workspace')]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "location": "[parameters('location')]",
+            "id": "[Concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourcegroup'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspace'))]",
+            "resources": [
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "name": "Inside Technologies Dashboard for Veeam",
+                    "type": "views",
+                    "location": "[parameters('location')]",
+                    "id": "[Concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourcegroup'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspace'),'/views/Inside Technologies Dashboard for Veeam')]",
+                    "dependson": [
+                        "[Concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourcegroup'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspace'))]"
+                    ],
+                    "properties": {
+                        "Id": "Inside Technologies Dashboard for Veeam",
+                        "Name": "Inside Technologies Dashboard for Veeam",
+                        "Author": "silvio.dibenedetto@insidetechnologies.eu",
+                        "Source": "Local",
+                        "Version": 2,
+                        "Dashboard": [
+                            {
+                                "Id": "InformationBlade",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "Title": "",
+                                        "NewGroup": false,
+                                        "Color": "#002050"
+                                    },
+                                    "Header": {
+                                        "Image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAYAAAA+VemSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhBRjFFMTI1MURBQjExRTZBMzFGRDk0NTlGNTFFNDQ0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhBRjFFMTI2MURBQjExRTZBMzFGRDk0NTlGNTFFNDQ0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEFGMUUxMjMxREFCMTFFNkEzMUZEOTQ1OUY1MUU0NDQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEFGMUUxMjQxREFCMTFFNkEzMUZEOTQ1OUY1MUU0NDQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz45ynawAAAx7UlEQVR42ux9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",
+                                        "Label": "Veeam Solution",
+                                        "Link": {
+                                            "Label": "Powered by Inside Technologies",
+                                            "Url": "http://www.insidetechnologies.eu"
+                                        }
+                                    },
+                                    "List": [
+                                        {
+                                            "Title": "Overview",
+                                            "Content": "This Intelligent Pack for Operations Managenent Suite allows you to manage Veeam Backup & Replication and Veeam Agent. For more information you send a feedback from our web site."
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "Id": "SingleQueryDonutBuilderBladeV1",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "Backup & Replication Servers",
+                                        "newGroup": false,
+                                        "icon": "",
+                                        "useIcon": false
+                                    },
+                                    "Header": {
+                                        "Title": "Errors",
+                                        "Subtitle": ""
+                                    },
+                                    "Donut": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Error\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by EventLevelName",
+                                        "CenterLegend": {
+                                            "Text": "Total",
+                                            "Operation": "Sum",
+                                            "ArcsToSelect": []
+                                        },
+                                        "Options": {
+                                            "colors": [
+                                                "#ba141a",
+                                                "#0072c6",
+                                                "#00bcf2"
+                                            ],
+                                            "valueColorMapping": []
+                                        },
+                                        "NavigationSelect": {}
+                                    },
+                                    "List": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Error\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by Computer",
+                                        "HideGraph": false,
+                                        "enableSparklines": false,
+                                        "operation": "Summary",
+                                        "ColumnsTitle": {
+                                            "Name": "Computer",
+                                            "Value": "Count"
+                                        },
+                                        "Color": "#ba141a",
+                                        "thresholds": {
+                                            "isEnabled": false,
+                                            "values": [
+                                                {
+                                                    "name": "Normal",
+                                                    "threshold": "Default",
+                                                    "color": "#009e49",
+                                                    "isDefault": true
+                                                },
+                                                {
+                                                    "name": "Warning",
+                                                    "threshold": "60",
+                                                    "color": "#fcd116",
+                                                    "isDefault": false
+                                                },
+                                                {
+                                                    "name": "Error",
+                                                    "threshold": "90",
+                                                    "color": "#ba141a",
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        },
+                                        "NameDSVSeparator": "",
+                                        "NavigationQuery": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Error\" | where TimeGenerated > ago(7d)",
+                                        "NavigationSelect": {}
+                                    }
+                                }
+                            },
+                            {
+                                "Id": "SingleQueryDonutBuilderBladeV1",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "",
+                                        "newGroup": false,
+                                        "icon": "",
+                                        "useIcon": false
+                                    },
+                                    "Header": {
+                                        "Title": "Warning",
+                                        "Subtitle": ""
+                                    },
+                                    "Donut": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Warning\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by EventLevelName",
+                                        "CenterLegend": {
+                                            "Text": "Total",
+                                            "Operation": "Sum",
+                                            "ArcsToSelect": []
+                                        },
+                                        "Options": {
+                                            "colors": [
+                                                "#fff100",
+                                                "#0072c6",
+                                                "#00bcf2"
+                                            ],
+                                            "valueColorMapping": []
+                                        },
+                                        "NavigationSelect": {}
+                                    },
+                                    "List": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Warning\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by Computer",
+                                        "HideGraph": false,
+                                        "enableSparklines": false,
+                                        "operation": "Summary",
+                                        "ColumnsTitle": {
+                                            "Name": "Computer",
+                                            "Value": "Count"
+                                        },
+                                        "Color": "#fff100",
+                                        "thresholds": {
+                                            "isEnabled": false,
+                                            "values": [
+                                                {
+                                                    "name": "Normal",
+                                                    "threshold": "Default",
+                                                    "color": "#009e49",
+                                                    "isDefault": true
+                                                },
+                                                {
+                                                    "name": "Warning",
+                                                    "threshold": "60",
+                                                    "color": "#fcd116",
+                                                    "isDefault": false
+                                                },
+                                                {
+                                                    "name": "Error",
+                                                    "threshold": "90",
+                                                    "color": "#ba141a",
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        },
+                                        "NameDSVSeparator": "",
+                                        "NavigationQuery": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Warning\" | where TimeGenerated > ago(7d)",
+                                        "NavigationSelect": {}
+                                    }
+                                }
+                            },
+                            {
+                                "Id": "SingleQueryDonutBuilderBladeV1",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "",
+                                        "newGroup": false,
+                                        "icon": "",
+                                        "useIcon": false
+                                    },
+                                    "Header": {
+                                        "Title": "Information",
+                                        "Subtitle": ""
+                                    },
+                                    "Donut": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Information\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by EventLevelName",
+                                        "CenterLegend": {
+                                            "Text": "Total",
+                                            "Operation": "Sum",
+                                            "ArcsToSelect": []
+                                        },
+                                        "Options": {
+                                            "colors": [
+                                                "#009e49",
+                                                "#0072c6",
+                                                "#00bcf2"
+                                            ],
+                                            "valueColorMapping": []
+                                        },
+                                        "NavigationSelect": {}
+                                    },
+                                    "List": {
+                                        "Query": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Information\" | where TimeGenerated > ago(7d) | summarize AggregatedValue = count() by Computer",
+                                        "HideGraph": false,
+                                        "enableSparklines": false,
+                                        "operation": "Summary",
+                                        "ColumnsTitle": {
+                                            "Name": "Computer",
+                                            "Value": "Count"
+                                        },
+                                        "Color": "#0072c6",
+                                        "thresholds": {
+                                            "isEnabled": false,
+                                            "values": [
+                                                {
+                                                    "name": "Normal",
+                                                    "threshold": "Default",
+                                                    "color": "#009e49",
+                                                    "isDefault": true
+                                                },
+                                                {
+                                                    "name": "Warning",
+                                                    "threshold": "60",
+                                                    "color": "#fcd116",
+                                                    "isDefault": false
+                                                },
+                                                {
+                                                    "name": "Error",
+                                                    "threshold": "90",
+                                                    "color": "#ba141a",
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        },
+                                        "NameDSVSeparator": "",
+                                        "NavigationQuery": "search * | where ( EventLog == \"Veeam Backup\" ) and EventLevelName == \"Information\" | where TimeGenerated > ago(7d)",
+                                        "NavigationSelect": {}
+                                    }
+                                }
+                            },
+                            {
+                                "Id": "TwoNumberTileListBuilderBlade",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "Veeam Agent for Windows",
+                                        "newGroup": false,
+                                        "icon": "",
+                                        "useIcon": false
+                                    },
+                                    "Tile": {
+                                        "Legend": "Total Agent",
+                                        "Query": "ConfigurationData | where SvcDisplayName == \"Veeam Agent for Microsoft Windows\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                    },
+                                    "SecondTile": {
+                                        "Legend": "Stopped Agent",
+                                        "Query": "ConfigurationData | where SvcDisplayName == \"Veeam Agent for Microsoft Windows\" and SvcState == \"Stopped\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                    },
+                                    "List": {
+                                        "Query": "ConfigurationData | where SvcDisplayName == \"Veeam Agent for Microsoft Windows\" | distinct Computer, SvcState | project Computer, SvcState",
+                                        "HideGraph": false,
+                                        "enableSparklines": false,
+                                        "operation": "Summary",
+                                        "ColumnsTitle": {
+                                            "Name": "Computer",
+                                            "Value": ""
+                                        },
+                                        "Color": "#0072c6",
+                                        "thresholds": {
+                                            "isEnabled": false,
+                                            "values": [
+                                                {
+                                                    "name": "Normal",
+                                                    "threshold": "Default",
+                                                    "color": "#009e49",
+                                                    "isDefault": true
+                                                },
+                                                {
+                                                    "name": "Warning",
+                                                    "threshold": "60",
+                                                    "color": "#fcd116",
+                                                    "isDefault": false
+                                                },
+                                                {
+                                                    "name": "Error",
+                                                    "threshold": "90",
+                                                    "color": "#ba141a",
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        },
+                                        "NameDSVSeparator": "",
+                                        "NavigationQuery": "ConfigurationData | where SvcDisplayName == \"Veeam Agent for Microsoft Windows\" | distinct Computer, SvcDisplayName, SvcStartupType, SvcState | project Computer, SvcDisplayName, SvcStartupType, SvcState",
+                                        "NavigationSelect": {}
+                                    },
+                                    "Blade": {
+                                        "NavigationSelect": {}
+                                    }
+                                }
+                            },
+                            {
+                                "Id": "TwoNumberTileListBuilderBlade",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "Veeam Agent for Linux",
+                                        "newGroup": false,
+                                        "icon": "",
+                                        "useIcon": false
+                                    },
+                                    "Tile": {
+                                        "Legend": "Total Agent",
+                                        "Query": "ConfigurationData | where SvcName == \"veeamservice\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                    },
+                                    "SecondTile": {
+                                        "Legend": "Stopped Agent",
+                                        "Query": "ConfigurationData | where SvcName == \"veeamservice\" and SvcState == \"Stopped\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                    },
+                                    "List": {
+                                        "Query": "ConfigurationData | where SvcName == \"veeamservice\" | distinct Computer, SvcDisplayName, SvcStartupType, SvcState | project Computer, SvcState",
+                                        "HideGraph": false,
+                                        "enableSparklines": false,
+                                        "operation": "Summary",
+                                        "ColumnsTitle": {
+                                            "Name": "Computer",
+                                            "Value": ""
+                                        },
+                                        "Color": "#0072c6",
+                                        "thresholds": {
+                                            "isEnabled": false,
+                                            "values": [
+                                                {
+                                                    "name": "Normal",
+                                                    "threshold": "Default",
+                                                    "color": "#009e49",
+                                                    "isDefault": true
+                                                },
+                                                {
+                                                    "name": "Warning",
+                                                    "threshold": "60",
+                                                    "color": "#fcd116",
+                                                    "isDefault": false
+                                                },
+                                                {
+                                                    "name": "Error",
+                                                    "threshold": "90",
+                                                    "color": "#ba141a",
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        },
+                                        "NameDSVSeparator": "",
+                                        "NavigationQuery": "ConfigurationData | where SvcName == \"veeamservice\" | distinct Computer, SvcDisplayName, SvcStartupType, SvcState | project Computer, SvcDisplayName, SvcStartupType, SvcState",
+                                        "NavigationSelect": {}
+                                    },
+                                    "Blade": {
+                                        "NavigationSelect": {}
+                                    }
+                                }
+                            },
+                            {
+                                "Id": "LineChartCalloutStackedBuilderBlade",
+                                "Type": "Blade",
+                                "Version": 0,
+                                "Configuration": {
+                                    "General": {
+                                        "title": "Backup Server Performance Data",
+                                        "newGroup": false
+                                    },
+                                    "charts": [
+                                        {
+                                            "Header": {
+                                                "Title": "Processor",
+                                                "Subtitle": ""
+                                            },
+                                            "LineChart": {
+                                                "Query": "GroupComputerVeeamBackup | join (Perf | where CounterName == \"% Processor Time\" and InstanceName == \"_Total\") on Computer | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer",
+                                                "yAxis": {
+                                                    "isLogarithmic": false,
+                                                    "units": {
+                                                        "baseUnitType": "",
+                                                        "baseUnit": "",
+                                                        "displayUnit": ""
+                                                    },
+                                                    "customLabel": ""
+                                                },
+                                                "NavigationSelect": {}
+                                            }
+                                        },
+                                        {
+                                            "Header": {
+                                                "Title": "Memory Available",
+                                                "Subtitle": ""
+                                            },
+                                            "LineChart": {
+                                                "Query": "GroupComputerVeeamBackup | join (Perf | where ObjectName == \"Memory\" and CounterName == \"% Committed Bytes In Use\") on Computer | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer",
+                                                "yAxis": {
+                                                    "isLogarithmic": false,
+                                                    "units": {
+                                                        "baseUnitType": "",
+                                                        "baseUnit": "",
+                                                        "displayUnit": ""
+                                                    },
+                                                    "customLabel": ""
+                                                },
+                                                "NavigationSelect": {}
+                                            }
+                                        },
+                                        {
+                                            "Header": {
+                                                "Title": "Disk % Free Space",
+                                                "Subtitle": ""
+                                            },
+                                            "LineChart": {
+                                                "Query": "GroupComputerVeeamBackup | join (Perf | where ObjectName == \"LogicalDisk\" and CounterName == \"% Free Space\" and InstanceName !contains \"_Total\" and InstanceName !contains \"HarddiskVolume1\" ) on Computer | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), InstanceName",
+                                                "yAxis": {
+                                                    "isLogarithmic": false,
+                                                    "units": {
+                                                        "baseUnitType": "",
+                                                        "baseUnit": "",
+                                                        "displayUnit": ""
+                                                    },
+                                                    "customLabel": ""
+                                                },
+                                                "NavigationSelect": {}
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "Filters": [
+                            {
+                                "FieldName": "Computer",
+                                "QueryForValues": "ConfigurationData | where SvcDisplayName == \"Veeam Agent for Microsoft Windows\" and SvcState == \"Running\" | summarize AggregatedValue = dcount(Computer) by Computer",
+                                "Title": "Running"
+                            }
+                        ],
+                        "OverviewTile": {
+                            "Id": "DoubleNumberBuilderTile",
+                            "Type": "OverviewTile",
+                            "Version": 2,
+                            "Configuration": {
+                                "TileOne": {
+                                    "Legend": "Veeam Backup & Replication Servers",
+                                    "Query": "Event | where EventLog == \"Veeam Backup\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                },
+                                "TileTwo": {
+                                    "Legend": "Veeam Agent",
+                                    "Query": "ConfigurationData | where SvcName == \"veeamservice\" or SvcDisplayName == \"Veeam Agent for Microsoft Windows\" | summarize AggregatedValue = dcount(Computer) by Computer | count"
+                                },
+                                "Advanced": {
+                                    "DataFlowVerification": {
+                                        "Enabled": false,
+                                        "Query": "search * | limit 1 | project TimeGenerated",
+                                        "Message": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

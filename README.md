@@ -11,10 +11,10 @@ What’s New in build 1.0.0.0:
 
 # Get Started
 
-Before import the solution, you must create a group called GroupComputerVeeamBackup, with this query:
+Before import the solution, you must create a group called **GroupComputerVeeamBackup**, with this query:
 
 Event
 | where EventLog == "Veeam Backup"
 | distinct Computer
 
-The second step is enable the Windows Event logs (Settings area) for Veeam Agent and Veeam Backup (Error, Warning, Information).
+The second step is enable the Windows Event logs (Settings area) for **Veeam Agent** and **Veeam Backup** (Error, Warning, Information).

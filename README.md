@@ -16,3 +16,5 @@ Before import the solution, you must create a group called GroupComputerVeeamBac
 Event
 | where EventLog == "Veeam Backup"
 | distinct Computer
+
+The second step is enable the Windows Event logs (Settings area) for Veeam Agent and Veeam Backup (Error, Warning, Information).
